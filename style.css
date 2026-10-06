@@ -1,6 +1,11 @@
 html, body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -11,43 +16,59 @@ body {
 .container {
   margin: 0 auto;
   max-width: 940px;
-  padding: 0 10px;
+  padding: 0 15px;
+  width: 100%;
 }
 
 .header {
   background: url("images/stockmarket.jpg") no-repeat center center;
   background-size: cover;
-  height: 800px;
+  height: 550px;
   text-align: center;
 }
 
 .header .container {
   position: relative;
-  top: 200px;
+  top: 120px;
 }
 
 .header h1 {
   color: #fff;
-  line-height: 100px;
-  font-size: 80px;
+  line-height: 1.1;
+  font-size: 45px;
   margin-top: 0;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 }
 
-@media (min-width:850px) {
+@media (min-width: 850px) {
+  .header {
+    height: 800px;
+  }
+  .header .container {
+    top: 200px;
+  }
   .header h1 {
     font-size: 120px;
+    margin-bottom: 80px;
   }
 }
 
 .header p {
   color: #fff;
   font-weight: 500;
-  letter-spacing: 8px;
-  margin-bottom: 40px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
   margin-top: 0;
   text-transform: uppercase;
+  font-size: 14px;
+}
+
+@media (min-width: 850px) {
+  .header p {
+    letter-spacing: 8px;
+    font-size: 16px;
+  }
 }
 
 .btn {
@@ -56,97 +77,76 @@ body {
   padding: 10px 40px;
   text-decoration: none;
   transition: background .5s;
-}
-
-.nav {
-  background: #000;
-  height: 80px;
-  width: 100%;
-}
-
-.nav ul {
-  height: 80px;
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.nav ul li {
-  color: #fff;
   display: inline-block;
-  height: 80px;
-  line-height: 80px;
-  list-style: none;
-  padding: 0 10px;
-  transition: background .5s;
-}
-
-.btn:hover, .nav ul li:hover {
-  background: #117bff;
-  cursor: pointer;
-  transition: background .5s;
 }
 
 .main .container {
-  margin: 40px auto;
+  margin: 30px auto;
 }
 
 .main img {
-  float: center;
-  margin: 0px 0px 0px 0px;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .jumbotron {
   background: url("images/beans.jpg") center center;
   background-size: cover;
-  height: 600px;
+  padding: 60px 0;
+  text-align: center;
 }
 
 .jumbotron .container {
   position: relative;
-  top: 220px;
+  top: 0;
 }
 
-.jumbotron h2 {
+.jumbotron h2, .jumbotron p {
   color: #fff;
-  text-align: right;
+  text-align: center;
 }
 
-.jumbotron p {
-  color: #fff;
-  text-align: right;
+.jumbotron img {
+  display: inline-block;
+  margin: 10px;
+  float: none !important;
 }
 
-.jumbotron .btn {
-  margin: 10px 0 0;
-  float: right;
+@media (min-width: 768px) {
+  .jumbotron {
+    height: 500px;
+    text-align: right;
+  }
+  .jumbotron .container {
+    top: 150px;
+  }
+  .jumbotron h2, .jumbotron p {
+    text-align: right;
+  }
+  .jumbotron img {
+    float: right !important;
+    margin: 10px 0 0 10px;
+  }
 }
 
 .footer {
   background: #000;
-  height: 50px;
-  padding-bottom: 10px;
+  padding: 20px 10px;
+  text-align: center;
 }
 
 .footer p {
   color: #fff;
-  font-size: 14px;
-  height: 30px;
-  line-height: 25px;
-  margin: 0;
+  font-size: 13px;
+  line-height: 22px;
+  margin: 5px 0;
 }
 
-@media (max-width: 500px) {
-  .header h1 {
-    font-size: 50px;
-    line-height: 64px;
-  }
-
-  .main, .jumbotron {
-    padding: 0 30px;
-  }
-
-  .main img {
-    width: 100%;
+@media (max-width: 768px) {
+  table th, table td {
+    padding: 8px !important;
+    font-size: 11px !important;
   }
 }
