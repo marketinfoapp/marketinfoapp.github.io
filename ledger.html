@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="keywords" content="market info,stock market, forex, crypto, economies, market info app,MI, ledger, transparency">
+    <meta name="description" content="Market Info (MI) MIC Token Transparency Ledger.">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIC Token Transparency Ledger - Market Info</title>
+  </head>
+  <body>
+    <div class="header" style="height: 300px; min-height: 300px;">
+      <div class="container" style="top: 80px;">
+        <h1>MIC Ledger</h1>
+        <p>Transparency & Transactions</p>
+      </div>
+    </div>
+
+    <div class="main" style="padding: 40px 0;">
+      <div class="container">
+        <h2>MIC Token Transparency Ledger</h2>
+        <p>All MIC token conversions, rewards, and transfers are publicly and transparently logged on our immutable ledger below.</p>
+        <p><a href="index.html" style="color: #117bff; text-decoration: none;">&larr; Back to Home</a></p>
+        <div style="overflow-x:auto; margin-top: 20px;">
+          <table id="mic-ledger-table" style="width:100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <thead>
+              <tr style="background: #117bff; color: white; text-align: left;">
+                <th style="padding: 12px; border: 1px solid #ddd;">Timestamp</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">From</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">To</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">Amount</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">Type</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-tbody">
+              <tr><td colspan="5" style="padding: 20px; text-align: center;">Loading ledger transactions...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function loadPublicLedger() {
+        try {
+          const response = await fetch('ledger.json');
+          if (!response.ok) throw new Error('Ledger not found');
+          const transactions = await response.json();
+
+          let tbodyHtml = '';
+          if (transactions.length === 0) {
+            tbodyHtml = '<tr><td colspan="5" style="padding: 20px; text-align: center;">No transactions recorded yet.</td></tr>';
+          } else {
+            transactions.forEach(tx => {
+              const dateStr = tx.timestamp ? new Date(tx.timestamp).toLocaleString() : 'N/A';
+              tbodyHtml += `<tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">${dateStr}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">@${tx.from || 'system'}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">@${tx.to || 'system'}</td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; color: #117bff;">${tx.amount} MIC</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-transform: uppercase; font-size: 12px;"><span style="background: #eee; padding: 4px 8px; border-radius: 4px;">${tx.type}</span></td>
+              </tr>`;
+            });
+          }
+          document.getElementById('ledger-tbody').innerHTML = tbodyHtml;
+        } catch (e) {
+          document.getElementById('ledger-tbody').innerHTML = '<tr><td colspan="5" style="padding: 20px; text-align: center; color: #d9534f;">Failed to load ledger transactions. (ledger.json will appear after the first transaction).</td></tr>';
+        }
+      }
+      loadPublicLedger();
+    </script>
+
+    <div class="footer">
+      <div class="container">
+        <p>Contact us: <a href="mailto:marketinfodev@gmail.com" style="color:#fff">Email</a> | <a href="https://www.facebook.com/marketinfodeveloper/" style="color:#fff">Facebook</a> | <a href="https://www.twitter.com/marketinfodev" style="color:#fff">Twitter</a></p>
+        <p>&copy; 2018-2024 Market Info (MI). All rights reserved. <a href="ledger.html" style="color:#fff">MIC Ledger</a> | <a href="p/mi-privacy-policy.html" style="color:#fff">Privacy</a> | <a href="p/request-delete-information.html" style="color:#fff">Request Delete Information</a></p>
+      </div>
+    </div>
+  </body>
+</html>
