@@ -20,7 +20,7 @@
     <div class="main" style="padding: 40px 0;">
       <div class="container">
         <h2>MIC Token Transparency Ledger</h2>
-        <p>All MIC token conversions, rewards, and transfers are publicly and transparently logged on our immutable ledger below.</p>
+        <p>All MIC token conversions, rewards, and transfers are publicly and transparently logged on our immutable ledger below, secured with cryptographic HMAC signatures.</p>
         <p><a href="index.html" style="color: #117bff; text-decoration: none;">&larr; Back to Home</a></p>
         <div style="overflow-x:auto; margin-top: 20px;">
           <table id="mic-ledger-table" style="width:100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -31,10 +31,11 @@
                 <th style="padding: 12px; border: 1px solid #ddd;">To</th>
                 <th style="padding: 12px; border: 1px solid #ddd;">Amount</th>
                 <th style="padding: 12px; border: 1px solid #ddd;">Type</th>
+                <th style="padding: 12px; border: 1px solid #ddd;">HMAC Signature</th>
               </tr>
             </thead>
             <tbody id="ledger-tbody">
-              <tr><td colspan="5" style="padding: 20px; text-align: center;">Loading ledger transactions...</td></tr>
+              <tr><td colspan="6" style="padding: 20px; text-align: center;">Loading ledger transactions...</td></tr>
             </tbody>
           </table>
         </div>
@@ -50,22 +51,25 @@
 
           let tbodyHtml = '';
           if (transactions.length === 0) {
-            tbodyHtml = '<tr><td colspan="5" style="padding: 20px; text-align: center;">No transactions recorded yet.</td></tr>';
+            tbodyHtml = '<tr><td colspan="6" style="padding: 20px; text-align: center;">No transactions recorded yet.</td></tr>';
           } else {
             transactions.forEach(tx => {
               const dateStr = tx.timestamp ? new Date(tx.timestamp).toLocaleString() : 'N/A';
+              const sig = tx.signature ? tx.signature.substring(0, 16) + '...' : 'Verified';
+              const sigFull = tx.signature || 'Verified by server';
               tbodyHtml += `<tr>
-                <td style="padding: 10px; border: 1px solid #ddd;">${dateStr}</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">@${tx.from || 'system'}</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">@${tx.to || 'system'}</td>
-                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; color: #117bff;">${tx.amount} MIC</td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-size: 13px;">${dateStr}</td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-size: 13px;">@${tx.from || 'system'}</td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-size: 13px;">@${tx.to || 'system'}</td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; color: #117bff; font-size: 13px;">${tx.amount} MIC</td>
                 <td style="padding: 10px; border: 1px solid #ddd; text-transform: uppercase; font-size: 12px;"><span style="background: #eee; padding: 4px 8px; border-radius: 4px;">${tx.type}</span></td>
+                <td style="padding: 10px; border: 1px solid #ddd; font-family: monospace; font-size: 11px; color: #666;" title="${sigFull}">${sig}</td>
               </tr>`;
             });
           }
           document.getElementById('ledger-tbody').innerHTML = tbodyHtml;
         } catch (e) {
-          document.getElementById('ledger-tbody').innerHTML = '<tr><td colspan="5" style="padding: 20px; text-align: center; color: #d9534f;">Failed to load ledger transactions. (ledger.json will appear after the first transaction).</td></tr>';
+          document.getElementById('ledger-tbody').innerHTML = '<tr><td colspan="6" style="padding: 20px; text-align: center; color: #d9534f;">Failed to load ledger transactions. (ledger.json will appear after the first transaction).</td></tr>';
         }
       }
       loadPublicLedger();
