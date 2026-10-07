@@ -11,142 +11,201 @@ html, body {
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
+  line-height: 1.5;
+  color: #333;
 }
 
 .container {
   margin: 0 auto;
   max-width: 940px;
-  padding: 0 15px;
+  padding: 0 20px;
   width: 100%;
 }
 
 .header {
   background: url("images/stockmarket.jpg") no-repeat center center;
   background-size: cover;
-  height: 550px;
+  height: 450px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header .container {
-  position: relative;
-  top: 120px;
+  position: static;
+  top: auto;
 }
 
 .header h1 {
   color: #fff;
-  line-height: 1.1;
-  font-size: 45px;
+  font-size: 38px;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-transform: uppercase;
-}
-
-@media (min-width: 850px) {
-  .header {
-    height: 800px;
-  }
-  .header .container {
-    top: 200px;
-  }
-  .header h1 {
-    font-size: 120px;
-    margin-bottom: 80px;
-  }
+  word-break: break-word;
 }
 
 .header p {
   color: #fff;
   font-weight: 500;
-  letter-spacing: 4px;
-  margin-bottom: 30px;
-  margin-top: 0;
+  letter-spacing: 3px;
+  margin: 0;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
 }
 
-@media (min-width: 850px) {
+@media (min-width: 768px) {
+  .header {
+    height: 700px;
+  }
+  .header h1 {
+    font-size: 80px;
+    margin-bottom: 30px;
+  }
   .header p {
     letter-spacing: 8px;
     font-size: 16px;
   }
 }
 
-.btn {
-  color: #fff;
-  background: #000;
-  padding: 10px 40px;
-  text-decoration: none;
-  transition: background .5s;
-  display: inline-block;
+.main {
+  padding: 40px 0;
 }
 
 .main .container {
-  margin: 30px auto;
+  margin: 0 auto;
 }
 
 .main img {
   display: block;
-  margin: 0 auto;
-  max-width: 100%;
+  margin: 0 auto 20px auto;
+  max-width: 160px;
   height: auto;
+}
+
+.main h2 {
+  font-size: 24px;
+  margin-top: 30px;
+  color: #111;
+}
+
+.main p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
 }
 
 .jumbotron {
   background: url("images/beans.jpg") center center;
   background-size: cover;
-  padding: 60px 0;
+  padding: 50px 20px;
   text-align: center;
 }
 
 .jumbotron .container {
-  position: relative;
-  top: 0;
+  position: static;
+  top: auto;
 }
 
-.jumbotron h2, .jumbotron p {
+.jumbotron h2 {
+  color: #fff;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.jumbotron p {
   color: #fff;
   text-align: center;
+  font-size: 15px;
+}
+
+.jumbotron a {
+  display: inline-block;
+  margin: 10px;
 }
 
 .jumbotron img {
   display: inline-block;
-  margin: 10px;
   float: none !important;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
 @media (min-width: 768px) {
   .jumbotron {
-    height: 500px;
-    text-align: right;
-  }
-  .jumbotron .container {
-    top: 150px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 60px;
   }
   .jumbotron h2, .jumbotron p {
     text-align: right;
   }
   .jumbotron img {
     float: right !important;
-    margin: 10px 0 0 10px;
+    margin: 10px 0 0 15px;
+    width: 120px;
+    height: 120px;
   }
 }
 
 .footer {
   background: #000;
-  padding: 20px 10px;
+  padding: 25px 20px;
   text-align: center;
 }
 
 .footer p {
   color: #fff;
   font-size: 13px;
-  line-height: 22px;
+  line-height: 24px;
   margin: 5px 0;
 }
 
+.footer a {
+  color: #117bff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Table Styles for Ledger */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+
+th, td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #117bff;
+  color: white;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
-  table th, table td {
-    padding: 8px !important;
-    font-size: 11px !important;
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  .header h1 {
+    font-size: 32px;
+  }
+  .main h2 {
+    font-size: 20px;
   }
 }
