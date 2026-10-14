@@ -96,6 +96,56 @@ body {
   line-height: 1.6;
 }
 
+.cash-ledger-link {
+  align-items: center;
+  background: #f4f7fc;
+  border: 1px solid #dce5f2;
+  border-radius: 16px;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin: 52px 0 12px;
+  padding: 28px;
+}
+
+.cash-ledger-link h2 {
+  margin: 4px 0 8px;
+}
+
+.cash-ledger-link p {
+  margin: 8px 0 16px;
+}
+
+.cash-ledger-link .cash-ledger-eyebrow {
+  color: #3563ad;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.cash-ledger-link img {
+  flex: 0 0 auto;
+  margin: 0;
+  max-width: 96px;
+}
+
+.cash-ledger-link-button {
+  background: #3563ad;
+  border-radius: 8px;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 16px;
+  text-decoration: none;
+}
+
+.cash-ledger-link-button:hover {
+  background: #244d8e;
+}
+
 .jumbotron {
   background: url("images/beans.jpg") center center;
   background-size: cover;
@@ -198,6 +248,14 @@ th {
 }
 
 @media (max-width: 768px) {
+  .cash-ledger-link {
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .cash-ledger-link img {
+    width: 72px;
+    height: 72px;
+  }
   th, td {
     padding: 8px 6px;
     font-size: 12px;
