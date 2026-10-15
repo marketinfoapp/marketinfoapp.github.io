@@ -35,27 +35,52 @@
         </div>
         <p class="availability-note">The Microsoft Store listing will be available when the app is published.</p>
       </div>
-      <div class="preview-wrap" aria-label="Illustration of a Cash Ledger dashboard">
+      <div class="preview-wrap" aria-label="Illustration of the Cash Ledger Windows app with an empty personal ledger">
         <div class="preview-window">
           <div class="preview-topbar">
             <span class="preview-mark">[+−]</span>
             <span>Cash Ledger</span>
-            <span class="preview-ledger">Personal ledger</span>
+            <span class="preview-ledger">Ledger Name: Personal ledger</span>
           </div>
           <div class="preview-content">
-            <p class="preview-caption">LEDGER OVERVIEW</p>
-            <div class="balance-card">
-              <span>Total ledger balance</span>
-              <strong>$4,280.50</strong>
-              <div class="balance-change"><span>Cash in</span><b>+$1,250.00</b><span>Cash out</span><b>−$420.75</b></div>
+            <div class="summary-cards" aria-label="Ledger totals">
+              <div class="summary-card summary-total"><span>Total Ledger Balance</span><strong>$185.00</strong></div>
+              <div class="summary-card summary-in"><span>Cash In</span><strong>$185.00</strong></div>
+              <div class="summary-card summary-out"><span>Cash Out</span><strong>$0.00</strong></div>
             </div>
-            <div class="account-row"><span><i class="dot dot-purple"></i>Cash</span><b>$1,840.00</b></div>
-            <div class="account-row"><span><i class="dot dot-blue"></i>Wallet</span><b>$625.50</b></div>
-            <div class="account-row"><span><i class="dot dot-green"></i>Bank</span><b>$1,815.00</b></div>
-            <div class="preview-transaction"><span>Recent transaction</span><b>Market supplies <em>−$38.25</em></b></div>
+            <div class="account-cards" aria-label="Account balances">
+              <div class="account-card"><span>Cash</span><b>$185.00</b></div>
+              <div class="account-card"><span>Wallet</span><b>$0.00</b></div>
+              <div class="account-card"><span>Bank</span><b>$0.00</b></div>
+              <div class="account-card"><span>Receivable</span><b>$0.00</b></div>
+              <div class="account-card"><span>Investment</span><b>$0.00</b></div>
+            </div>
+            <div class="ledger-panels">
+              <div class="transaction-form">
+                <strong>New Transaction</strong>
+                <span>Record money in, money out, or a transfer.</span>
+                <div class="mock-select"><span>Transaction Type</span><b>Cash In</b></div>
+                <div class="mock-field">Transaction Name / Note</div>
+                <div class="mock-field">Amount (USD)</div>
+                <div class="mock-field">Multiplier&nbsp; 1</div>
+                <div class="mock-total">Total Amount: $0.00</div>
+                <div class="mock-select"><span>Payment Source</span><b>Cash</b></div>
+                <div class="mock-button">Add Transaction</div>
+              </div>
+              <div class="transactions-panel">
+                <div class="transactions-heading"><strong>Transactions</strong><span>1 Transaction</span></div>
+                <div class="transaction-columns"><span>TRANSACTION NAME / NOTE</span><span>PAYMENT SOURCE</span><span>DATE</span><span>AMOUNT</span></div>
+                <div class="transaction-entry">
+                  <strong>Weekend market sales</strong>
+                  <span>Cash</span>
+                  <time datetime="2026-10-15">Oct 15, 2026</time>
+                  <b>+$185.00</b>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="preview-note">Illustrative preview</p>
+        <p class="preview-note">Illustrative preview based on the app’s empty-ledger screen</p>
       </div>
     </section>
 
