@@ -171,36 +171,16 @@ body {
   font-size: 15px;
 }
 
-.jumbotron a {
-  display: inline-block;
-  margin: 10px;
-}
-
-.jumbotron img {
-  display: inline-block;
-  float: none !important;
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
 @media (min-width: 768px) {
   .jumbotron {
-    height: 450px;
+    min-height: 300px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 60px;
+    justify-content: center;
+    padding: 50px 60px;
   }
   .jumbotron h2, .jumbotron p {
-    text-align: right;
-  }
-  .jumbotron img {
-    float: right !important;
-    margin: 10px 0 0 15px;
-    width: 120px;
-    height: 120px;
+    text-align: center;
   }
 }
 
@@ -251,10 +231,6 @@ th {
   .cash-ledger-link {
     align-items: flex-start;
     padding: 20px;
-  }
-  .cash-ledger-link img {
-    width: 72px;
-    height: 72px;
   }
   th, td {
     padding: 8px 6px;
